@@ -1,3 +1,4 @@
+//para importar o getWord do arquivo words.js trazendo a palavra e a dica
 import getWord from "./words.js";
 
 const contentBtns = document.querySelector(".btns");
@@ -25,11 +26,11 @@ function init() {
   generateGuessSection();
   generateButtons();
 }
-
+//para gerar a palavra com os underlines
 function generateGuessSection() {
   contentGuessWord.textContent = "";
 
-  const { word, clue } = currentWord; // Usa a palavra e a dica armazenadas
+  const { word, clue } = currentWord; // Usa a palavra e a dica armazenadas no arquivo words.js
   const wordWithoutAccent = word
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
@@ -42,8 +43,8 @@ function generateGuessSection() {
     contentGuessWord.appendChild(span);
   });
 
-  // A dica só será mostrada após 2 erros
-  if (errorCount >= 2) {
+  // A dica só será mostrada após 5 erros
+  if (errorCount >= 5) {
     contentClue.textContent = `Dica: ${clue}`;
   }
 }
@@ -66,7 +67,7 @@ function wrongAnswer() {
     }, 100);
   }
 }
-
+//para verificar se a letra clicada está correta
 function verifyLetter(letter) {
   const arr = document.querySelectorAll(`[word="${letter}"]`);
 
@@ -81,12 +82,12 @@ function verifyLetter(letter) {
 
   if (won) {
     setTimeout(() => {
-      alert("Ganhou!!!");
+      alert("Parabéns !!! Você Ganhou!!!");
       init();
     }, 100);
   }
 }
-
+//para gerar o teclado através da tabela ASCII usando do 97 ao 123 que refre-se a letra a até a letra z
 function generateButtons() {
   contentBtns.textContent = "";
 
@@ -94,7 +95,7 @@ function generateButtons() {
     const btn = document.createElement("button");
     const letter = String.fromCharCode(i).toUpperCase();
     btn.textContent = letter;
-
+// para desabilitar o botão após clicar na letra
     btn.onclick = () => {
       btn.disabled = true;
       btn.style.backgroundColor = "gray";
