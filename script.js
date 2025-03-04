@@ -53,14 +53,15 @@ function wrongAnswer() {
   indexImg++;
   img.src = `img${indexImg}.png`;
 
-  if (errorCount >= 2) {
+  if (errorCount >= 5) {
     const { clue } = currentWord; // Usa a dica da palavra sorteada
-    contentClue.textContent = `Dica: ${clue}`;  // Exibe a dica após 2 erros
+    contentClue.textContent = `Dica: ${clue}`;  // Exibe a dica após 5 erros
   }
 
   if (indexImg === 7) {
     setTimeout(() => {
-      alert("Perdeu :/");
+      // Acessando a palavra correta através de currentWord.word
+      alert(`Que Pena você Perdeu, a palavra era: ${currentWord.word}`);
       init();
     }, 100);
   }
