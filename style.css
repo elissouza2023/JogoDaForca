@@ -51,6 +51,7 @@ main {
   flex-wrap: wrap;
   color: #000000;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 .btns {
@@ -95,4 +96,18 @@ button:hover {
     flex-direction: column;
     padding: 10px;
   }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateX(+100%); /* Começa fora da tela à esquerda */
+    opacity: 0; /* Começa invisível */
+  }
+  100% {
+    transform: translateX(0); /* Termina na posição original */
+    opacity: 1; /* Fica visível */
+  }
+}
+
+h1 {
+  animation: slideIn 3s ease-out;
 }
